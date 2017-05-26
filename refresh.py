@@ -1,5 +1,6 @@
 import imapclient
 import pyzmail
+import datetime
 
 imapObj = imapclient.IMAPClient('imap.gmail.com', ssl=True)
 imapObj.login('refresh.statusc9@gmail.com', 'd2z4BJxeSUVv')
@@ -14,8 +15,12 @@ else:
 	for i in UIDs:
 		rawMessages = imapObj.fetch([i],['BODY[]'])
 		message = pyzmail.PyzMessage.factory(rawMessages[i]['BODY[]'])
+		ts = message['Date']
+		dt = datetime.datetime.strptime(ts, "%a, %d %b %Y %H:%M:%S +0000") - datetime.timedelta(hours=6)
+		dtAdjusted = dt.strftime("%Y-%m-%d / %H:%M:%S MST")
 		print "Subject: " + message.get_subject()
 		print "To: " + message.get_addresses('to')[0][0]
+		print "D/T: " + dtAdjusted
 		if message.text_part != None:
 			print "Body: " + message.text_part.get_payload().decode(message.text_part.charset)
 			print "================================="

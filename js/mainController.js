@@ -119,12 +119,6 @@ app.controller("rfController", ['$scope', function ($scope) {
 			comment: "Hello2",
 			date: "05/22/2017",
 			time: "08:00 PM PDT"
-		},
-		{
-			company: "Sohee's Company",
-			status: "Delayed",
-			date: "05/22/2017",
-			time: "08:00 PM PDT"
 		}
 	];
 

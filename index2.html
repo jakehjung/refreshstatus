@@ -40,7 +40,7 @@
 								</p>
 								<p>{{refresh.date}} - {{refresh.time}}</p>
 							</div>
-							<div class="col-md-4 text-center">
+							<div class="col-md-4 text-right">
 								<button class="btn rf-btn" data-toggle="modal" data-target="#rfmodal{{$index}}">More</button>
 				    		    <!-- MODAL -->
 							    <div class="modal small fade" tabindex="-1" role="dialog" id="rfmodal{{$index}}">
@@ -53,7 +53,7 @@
 										    	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 										    		<span aria-hidden="true">&times;</span>
 										    	</button>
-										    	<h4 class="modal-title">{{refresh.company}}</h4>
+										    	<h4 class="modal-title text-center">{{refresh.company}}</h4>
 										  	</div>
 											<div class="modal-body text-left">
 											    <p class="detail-text"><b>Status</b>: {{refresh.status}}</p>
