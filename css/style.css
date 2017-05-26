@@ -1,0 +1,75 @@
+/* line 2, ../sass/style.scss */
+body {
+  background: #2c3e50;
+  font-size: 12px;
+}
+
+/* line 7, ../sass/style.scss */
+.panel {
+  border: 0px;
+}
+
+/* line 12, ../sass/style.scss */
+.bg-success {
+  background: #2ecc71 !important;
+}
+
+/* line 15, ../sass/style.scss */
+.bg-fail {
+  background: #e74c3c !important;
+}
+
+/* line 18, ../sass/style.scss */
+.bg-delay {
+  background: #f39c12 !important;
+}
+
+/* line 24, ../sass/style.scss */
+.dashboard-header {
+  color: #ecf0f1;
+}
+
+/* line 28, ../sass/style.scss */
+.refresh-status {
+  font-weight: bold;
+  color: #ecf0f1;
+}
+
+/* line 34, ../sass/style.scss */
+.panel-default .company-heading {
+  padding: 6px 8px;
+  font-weight: bold;
+  color: #ecf0f1;
+}
+/* line 38, ../sass/style.scss */
+.panel-default .company-heading a {
+  color: #ecf0f1;
+}
+/* line 43, ../sass/style.scss */
+.panel-default .panel-body {
+  padding: 7px;
+}
+/* line 45, ../sass/style.scss */
+.panel-default .panel-body p {
+  color: #ecf0f1;
+  margin: 0px;
+}
+/* line 49, ../sass/style.scss */
+.panel-default .panel-body a {
+  color: #ecf0f1;
+}
+
+/* line 55, ../sass/style.scss */
+.rf-btn {
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 0px;
+  background: #ecf0f1;
+  transition: all 0.3s;
+  color: #2c3e50;
+}
+/* line 62, ../sass/style.scss */
+.rf-btn:hover {
+  background: #bdc3c7;
+  transition: all 0.3s;
+}

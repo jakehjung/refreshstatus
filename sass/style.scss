@@ -1,0 +1,66 @@
+// GLOBAL
+body {
+	background: #2c3e50;
+	font-size: 12px;
+}
+
+.panel {
+	border: 0px;
+}
+
+// COLORS
+.bg-success {
+	background: #2ecc71 !important;
+}
+.bg-fail {
+	background: #e74c3c !important;
+}
+.bg-delay {
+	background: #f39c12 !important;
+}
+
+
+// CONTENT
+.dashboard-header {
+	color: #ecf0f1;
+}
+
+.refresh-status {
+	font-weight: bold;
+	color: #ecf0f1;
+}
+
+.panel-default {
+	.company-heading {
+		padding: 6px 8px;
+		font-weight: bold;
+		// background: #e74c3c;
+		a {
+			color: #ecf0f1;
+		}
+		color: #ecf0f1;
+	}
+	.panel-body {
+		padding: 7px;
+		p {
+			color: #ecf0f1;
+			margin: 0px;
+		}
+		a {
+			color: #ecf0f1;
+		}
+	}
+}
+
+.rf-btn {
+	font-size: 12px;
+	font-weight: bold;
+	border-radius: 0px;
+	background: #ecf0f1;
+	transition: all 0.3s;
+	color: #2c3e50;
+	&:hover {
+		background: #bdc3c7;
+		transition: all 0.3s;
+	}
+}

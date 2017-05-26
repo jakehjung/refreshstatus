@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Refresh Dashboard</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+
+	<div class="container-fluid">
+		<h1 class="text-center">Refresh Dashboard</h1>
+		<div class="alert alert-danger">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong>Danger!</strong> You have 1 failing refresh!
+		</div>
+		<div class="table-responsive">
+			  <table class="table">
+				<thead>
+					<tr>
+						<th>Company</th>
+						<th>Last Refresh</th>
+						<th>Duration</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+					<tr class="success">
+						<td>
+							<strong><a href="#details">Pitney</a></strong>
+						</td>
+						<td>5/24/2017</td>
+						<td>6 HR 20 MINS</td>
+						<td class="success">SUCCESS</td>
+					</tr>
+					<tr class="info">
+						<td colspan="10">NEXT REFRESH COMING UP: IN <b>50</b> MINS</td>
+					</tr>
+					<tr class="danger">
+						<td>
+							<strong><a href="#details">Honeywell</a></strong>
+						</td>
+						<td>5/24/2017</td>
+						<td>2 HR 22 MINS</td>
+						<td class="danger">FAILED</td>
+					<tr class="warning">
+						<td>
+							<strong><a href="#details">Flexera</a></strong>
+						</td>
+						<td>5/24/2017</td>
+						<td>4 HR 12 MINS</td>
+						<td class="success">DELAYED</td>
+					</tr>
+					<tr class="success">
+						<td>
+							<strong><a href="#details">Box</a></strong>
+						</td>
+						<td>5/24/2017</td>
+						<td>3 HR 09 MINS</td>
+						<td class="success">SUCCESS</td>
+					</tr>
+				</thead>
+			  </table>
+			</div>
+	</div>
+
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>
