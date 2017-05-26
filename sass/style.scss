@@ -31,6 +31,7 @@ body {
 }
 
 .panel-default {
+	border-radius: 0px;
 	.company-heading {
 		padding: 6px 8px;
 		font-weight: bold;
@@ -63,4 +64,21 @@ body {
 		background: #bdc3c7;
 		transition: all 0.3s;
 	}
+}
+
+.detail-text {
+	color: #2c3e50 !important;
+	font-size: 14px;
+}
+
+.modal-header {
+	background: #2ecc71;
+	color: #ecf0f1;
+	h4 {
+		font-weight: bold;
+	}
+}
+
+.modal-content {
+	border-radius: 0px;
 }

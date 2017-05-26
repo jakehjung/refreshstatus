@@ -14,7 +14,7 @@
     <script src="js/mainController.js"></script>
 </head>
 <body ng-app="rfDashboard">
-	<h1 class="text-center dashboard-header">Refresh Dashboard</h1>
+	<h1 class="text-center dashboard-header">Predictive Pipeline Refresh Dashboard</h1>
 	<div class="container-fluid main-wrapper">
 		<div class="row" ng-controller="rfController">
 			<div class="col-md-2" ng-repeat="refresh in refreshes | refreshSort:'status'">
@@ -25,8 +25,8 @@
 					<div class="panel-heading company-heading"
 						ng-class="{'bg-success': refresh.status === 'Successful',
 								'bg-fail': refresh.status === 'Failed',
-								'bg-delay': refresh.status === 'Delayed'}"">
-						<a href="#">{{refresh.company}}</a>
+								'bg-delay': refresh.status === 'Delayed'}">
+						<a href="#" data-toggle="modal" data-target="#rfmodal{{$index}}">{{refresh.company}}</a>
 					</div>
 					<div class="panel-body">
 						<div class="row">
@@ -38,10 +38,34 @@
 													'fa-refresh': refresh.status === 'Delayed'}" 
 										aria-hidden="true"></i> Refresh <span id="rf-status">{{refresh.status}}</span>
 								</p>
-								<p>Last Refresh: 14:54</p>
+								<p>{{refresh.date}} - {{refresh.time}}</p>
 							</div>
 							<div class="col-md-4 text-center">
-								<button class="btn rf-btn" ng-click="open(refresh)">More</button>
+								<button class="btn rf-btn" data-toggle="modal" data-target="#rfmodal{{$index}}">More</button>
+				    		    <!-- MODAL -->
+							    <div class="modal small fade" tabindex="-1" role="dialog" id="rfmodal{{$index}}">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header" 
+												ng-class="{'bg-success': refresh.status === 'Successful',
+															'bg-fail': refresh.status === 'Failed',
+															'bg-delay': refresh.status === 'Delayed'}">
+										    	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										    		<span aria-hidden="true">&times;</span>
+										    	</button>
+										    	<h4 class="modal-title">{{refresh.company}}</h4>
+										  	</div>
+											<div class="modal-body text-left">
+											    <p class="detail-text"><b>Status</b>: {{refresh.status}}</p>
+											    <p class="detail-text"><b>Comment</b>: {{refresh.comment}}</p>
+											    <p class="detail-text"><b>TimeStamp:</b>: {{refresh.date}} - {{refresh.time}}</p>
+											</div>
+											<div class="modal-footer">
+												<button type="button rf-btn" class="btn rf-btn" data-dismiss="modal">Close</button>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -59,6 +83,10 @@
 				</div>
 				<div class="modal-footer">
 			</script>
+
+			
+
+
 		</div>
 	</div>
 

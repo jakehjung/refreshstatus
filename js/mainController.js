@@ -1,116 +1,131 @@
-app.controller('modalController', function ($scope, $modalInstance, refresh) {
-
-	$scope.refresh = refresh;
-
-});
-
-app.controller("rfController", ['$scope', function ($scope, $timeout, $modal, $log) {
+app.controller("rfController", ['$scope', function ($scope) {
 
 	$scope.refreshes = [
 		{
 			company: "Pitney",
 			status: "Successful",
-			comment: "Hello"
+			comment: "Hello",
+			date: "05/22/2017",
+			time: "08:00 PM PDT"
 		},
 		{	
 			company: "Honeywell",
 			status: "Successful",
-			comment: "Hello2"
+			comment: "Hello2",
+			date: "05/22/2017",
+			time: "08:00 PM PDT"
 		},
 		{
 			company: "Box",
 			status: "Successful",
-			comment: "Hello2"
+			comment: "Hello2",
+			date: "05/22/2017",
+			time: "08:00 PM PDT"
 		},
 		{
 			company: "Flexera",
 			status: "Failed",
-			comment: "Hello2"
+			comment: "Hello2",
+			date: "05/22/2017",
+			time: "08:00 PM PDT"
 		},
 		{
 			company: "Cisco",
 			status: "Successful",
-			comment: "Hello2"
+			comment: "Hello2",
+			date: "05/22/2017",
+			time: "08:00 PM PDT"
 		},
 		{
 			company: "NCR",
 			status: "Delayed",
-			comment: "Hello2"
+			comment: "Hello2",
+			date: "05/22/2017",
+			time: "08:00 PM PDT"
 		},
 		{
 			company: "Aderant",
 			status: "Successful",
-			comment: "Hello2"
+			comment: "Hello2",
+			date: "05/22/2017",
+			time: "08:00 PM PDT"
 		},
 		{
 			company: "Broadridge",
 			status: "Successful",
-			comment: "Hello2"
+			comment: "Hello2",
+			date: "05/22/2017",
+			time: "08:00 PM PDT"
 		},
 		{
 			company: "Datrium",
 			status: "Successful",
-			comment: "Hello2"
+			comment: "Hello2",
+			date: "05/22/2017",
+			time: "08:00 PM PDT"
 		},
 		{
 			company: "EMC",
 			status: "Successful",
-			comment: "Hello2"
+			comment: "Hello2",
+			date: "05/22/2017",
+			time: "08:00 PM PDT"
 		},
 		{
 			company: "FONA",
 			status: "Successful",
-			comment: "Hello2"
+			comment: "Hello2",
+			date: "05/22/2017",
+			time: "08:00 PM PDT"
 		},
 		{
 			company: "Gigamon",
 			status: "Delayed",
-			comment: "Hello2"
+			comment: "Hello2",
+			date: "05/22/2017",
+			time: "08:00 PM PDT"
 		},
 		{
 			company: "HoneywellSafetyandProductivitySolutions",
 			status: "Failed",
-			comment: "Hello2"
+			comment: "Hello2",
+			date: "05/22/2017",
+			time: "08:00 PM PDT"
 		},
 		{
 			company: "PureStorageInc",
 			status: "Successful",
-			comment: "Hello2"
+			comment: "Hello2",
+			date: "05/22/2017",
+			time: "08:00 PM PDT"
 		},
 		{
 			company: "RSA",
 			status: "Successful",
-			comment: "Hello2"
+			comment: "Hello2",
+			date: "05/22/2017",
+			time: "08:00 PM PDT"
 		},
 		{
 			company: "ServiceMax",
 			status: "Delayed",
-			comment: "Hello2"
+			comment: "Hello2",
+			date: "05/22/2017",
+			time: "08:00 PM PDT"
 		},
 		{
 			company: "ThomsonReuters",
 			status: "Successful",
-			comment: "Hello2"
+			comment: "Hello2",
+			date: "05/22/2017",
+			time: "08:00 PM PDT"
 		},
 		{
 			company: "Sohee's Company",
-			status: "Delayed"
+			status: "Delayed",
+			date: "05/22/2017",
+			time: "08:00 PM PDT"
 		}
 	];
-
-	// MODAL WINDOW
-	$scope.open = function (_refresh) {
-
-        var modalInstance = $modal.open({
-			controller: "modalController",
-			templateUrl: "refreshContent.html",
-			resolve: {
-				refresh: function() {
-			    	return _refresh;
-				}
-			}
-        });
-
-    };
 
 }]);
