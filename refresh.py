@@ -61,12 +61,13 @@ else:
 		print "Subject: " + message.get_subject()
 		print "To: " + strCompany
 		# print "Object: " + Refresh(company, "Failed").company
-		print "Company: " + company
-		print "Status: " + status
-		print "D/T: " + dtAdjusted
 		if message.text_part != None:
 			print "Body: " + message.text_part.get_payload().decode(message.text_part.charset)
 			print "================================="
+		print "Dashboard Data:"
+		print "Company: " + company
+		print "Status: " + status
+		print "D/T: " + dtAdjusted
 
 #####################################
 # CODE HERE TO EXTRACT REFRESH DATA #
