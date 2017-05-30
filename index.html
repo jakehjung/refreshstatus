@@ -4,64 +4,91 @@
 	<title>Refresh Dashboard</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/mainController.js"></script>
 </head>
-<body>
-
-	<div class="container-fluid">
-		<h1 class="text-center">Refresh Dashboard</h1>
-		<div class="alert alert-danger">
-			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>Danger!</strong> You have 1 failing refresh!
-		</div>
-		<div class="table-responsive">
-			  <table class="table">
-				<thead>
-					<tr>
-						<th>Company</th>
-						<th>Last Refresh</th>
-						<th>Duration</th>
-						<th>Status</th>
-					</tr>
-				</thead>
-					<tr class="success">
-						<td>
-							<strong><a href="#details">Pitney</a></strong>
-						</td>
-						<td>5/24/2017</td>
-						<td>6 HR 20 MINS</td>
-						<td class="success">SUCCESS</td>
-					</tr>
-					<tr class="info">
-						<td colspan="10">NEXT REFRESH COMING UP: IN <b>50</b> MINS</td>
-					</tr>
-					<tr class="danger">
-						<td>
-							<strong><a href="#details">Honeywell</a></strong>
-						</td>
-						<td>5/24/2017</td>
-						<td>2 HR 22 MINS</td>
-						<td class="danger">FAILED</td>
-					<tr class="warning">
-						<td>
-							<strong><a href="#details">Flexera</a></strong>
-						</td>
-						<td>5/24/2017</td>
-						<td>4 HR 12 MINS</td>
-						<td class="success">DELAYED</td>
-					</tr>
-					<tr class="success">
-						<td>
-							<strong><a href="#details">Box</a></strong>
-						</td>
-						<td>5/24/2017</td>
-						<td>3 HR 09 MINS</td>
-						<td class="success">SUCCESS</td>
-					</tr>
-				</thead>
-			  </table>
+<body ng-app="rfDashboard">
+	<h1 class="text-center dashboard-header">Predictive Pipeline Refresh Dashboard</h1>
+	<div class="container-fluid main-wrapper">
+		<div class="row" ng-controller="rfController">
+			<div class="col-md-2" ng-repeat="refresh in refreshes | refreshSort:'status'">
+				<div class="panel panel-default" 
+					ng-class="{'bg-success': refresh.status === 'Successful',
+								'bg-fail': refresh.status === 'Failed',
+								'bg-delay': refresh.status === 'Delayed'}">
+					<div class="panel-heading company-heading"
+						ng-class="{'bg-success': refresh.status === 'Successful',
+								'bg-fail': refresh.status === 'Failed',
+								'bg-delay': refresh.status === 'Delayed'}">
+						<a href="#" data-toggle="modal" data-target="#rfmodal{{$index}}">{{refresh.company}}</a>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-8">
+								<p class="refresh-status">
+									<i class="fa fa-fw" 
+										ng-class="{'fa-exclamation-circle': refresh.status === 'Failed',
+													'fa-check-circle': refresh.status === 'Successful',
+													'fa-refresh': refresh.status === 'Delayed'}" 
+										aria-hidden="true"></i> Refresh <span id="rf-status">{{refresh.status}}</span>
+								</p>
+								<p>{{refresh.date}} - {{refresh.time}}</p>
+							</div>
+							<div class="col-md-4 text-right">
+								<button class="btn rf-btn" data-toggle="modal" data-target="#rfmodal{{$index}}">More</button>
+				    		    <!-- MODAL -->
+							    <div class="modal small fade" tabindex="-1" role="dialog" id="rfmodal{{$index}}">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header" 
+												ng-class="{'bg-success': refresh.status === 'Successful',
+															'bg-fail': refresh.status === 'Failed',
+															'bg-delay': refresh.status === 'Delayed'}">
+										    	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										    		<span aria-hidden="true">&times;</span>
+										    	</button>
+										    	<h4 class="modal-title text-center">{{refresh.company}}</h4>
+										  	</div>
+											<div class="modal-body text-left">
+											    <p class="detail-text"><b>Status</b>: {{refresh.status}}</p>
+											    <p class="detail-text"><b>Comment</b>: {{refresh.comment}}</p>
+											    <p class="detail-text"><b>TimeStamp</b>: {{refresh.date}} - {{refresh.time}}</p>
+											    <p class="detail-text"><b>OrgID</b>: {{refresh.orgid}}</p>
+											</div>
+											<div class="modal-footer">
+												<button type="button rf-btn" class="btn rf-btn" data-dismiss="modal">Close</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
+
+			<!--MODAL WINDOW--> 
+			<script type="text/ng-template" id="refreshContent.html">
+				<div class="modal-header">
+					<h3>Company: {{ refresh.name }}</h3>
+				</div>
+				<div class="modal-body">
+				    Detail:<br />
+				    {{ refresh.comment }}
+				</div>
+				<div class="modal-footer">
+			</script>
+
+			
+
+
+		</div>
 	</div>
 
 
