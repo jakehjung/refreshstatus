@@ -32,7 +32,7 @@ else:
 		# Timestamp
 		ts = message['Date']
 		dtRaw = datetime.datetime.strptime(ts, "%a, %d %b %Y %H:%M:%S +0000") - datetime.timedelta(hours=6)
-		dt = dtRaw.strftime("%Y-%m-%d / %H:%M:%S MST")
+		dt = dtRaw.strftime("%Y-%m-%d %H:%M:%S MST")
 		
 		# Company
 		companyRaw = message.get_addresses('to')[0][0]
@@ -74,19 +74,21 @@ else:
 
 		# Insert Data 
 		cur.execute("""
-			INSERT INTO refresh (orgid, company, status, dt) 
-			VALUES (%s,%s,%s,%s) 
+			INSERT INTO refresh (orgid,company,status,dt,body) 
+			VALUES (%s,%s,%s,%s,%s) 
 			ON DUPLICATE KEY UPDATE 
 			company = VALUES (company),
 			status = VALUES (status),
-			dt = VALUES (dt)""", (orgid,company,status,dt))
+			dt = VALUES (dt),
+			body = VALUES (body)""", (orgid,company,status,dt,body))
 
 		db.commit()
-		# for row in cur.fetchall():
-		# print row
+
+		for row in cur.fetchall():
+			print row
 
 		
-		db.close()
+	db.close()
 
 		
 

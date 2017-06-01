@@ -18,7 +18,7 @@
 <body ng-app="rfDashboard">
 	<div class="container-fluid main-wrapper">
 		<h1 class="dashboard-header">C:\>Predictive Pipeline Refresh Dashboard<span class="blinking-cursor"><b>|</b></span></h1>
-		<div class="row" ng-controller="rfController">
+		<div class="row" ng-controller="rfController" ng-init="displayData()">
 			<div class="col-md-2" ng-repeat="refresh in refreshes | refreshSort:'status'">
 				<div class="panel panel-default" 
 					ng-class="{'bg-success': refresh.status === 'Successful',
@@ -40,7 +40,7 @@
 													'fa-refresh': refresh.status === 'Delayed'}" 
 										aria-hidden="true"></i> Refresh <span id="rf-status">{{refresh.status}}</span>
 								</p>
-								<p>{{refresh.date}} - {{refresh.time}}</p>
+								<p>{{refresh.dt}}</p>
 							</div>
 							<div class="col-md-4 text-right">
 								<button class="btn rf-btn" data-toggle="modal" data-target="#rfmodal{{$index}}">More</button>
@@ -59,9 +59,9 @@
 										  	</div>
 											<div class="modal-body text-left">
 											    <p class="detail-text"><b>Status</b>: {{refresh.status}}</p>
-											    <p class="detail-text"><b>Comment</b>: {{refresh.comment}}</p>
-											    <p class="detail-text"><b>TimeStamp</b>: {{refresh.date}} - {{refresh.time}}</p>
+											    <p class="detail-text"><b>TimeStamp</b>: {{refresh.dt}}</p>
 											    <p class="detail-text"><b>OrgID</b>: {{refresh.orgid}}</p>
+											    <p class="detail-text"><b>Body</b>: {{refresh.body}}</p>
 											</div>
 											<div class="modal-footer">
 												<button type="button rf-btn" class="btn rf-btn" data-dismiss="modal">Close</button>

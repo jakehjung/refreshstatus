@@ -29,7 +29,6 @@ app.filter('refreshSort', function() {
 	    	return (refreshOrder(a.status) > refreshOrder(b.status) ? 1 : -1);
 	    });
 
-		console.log(filtered);
 	    return filtered;
 	    
   	};
