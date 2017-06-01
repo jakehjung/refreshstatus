@@ -3,28 +3,23 @@ import pyzmail
 import datetime
 import re
 import unicodedata
+import MySQLdb
 
+
+# Initialize Imap Connection
 imapObj = imapclient.IMAPClient('imap.gmail.com', ssl=True)
-imapObj.login('refresh.statusc9@gmail.com', 'd2z4BJxeSUVv')
-
+imapObj.login('refreshstatusc9@gmail.com', 'd2z4BJxeSUVv')
 imapObj.select_folder('INBOX', readonly=True)
-UIDs = imapObj.search(['UNSEEN', 'FROM jake.jung@insidesales.com']) # may be set to today's date? I guess it doesn't matter if it's chroning
+UIDs = imapObj.search(['UNSEEN', 'FROM jake.jung@insidesales.com'])
 
+# Initialize DB Connection
+db = MySQLdb.connect(host="localhost",
+                     user="root",
+                     passwd="",
+                     db="refresh") 
+cur = db.cursor()
 
-
-# Refresh object
-class Refresh(object):
-
-	# INITIALIZER
-	def __init__(self, company, status):
-		self.company = company
-		self.status = status
-
-	def make_refresh(self):
-		print self.company
-
-
-
+# Scrape Data From Email
 if not UIDs:
 	print "There aren't any new emails!"
 else:
@@ -36,13 +31,13 @@ else:
 
 		# Timestamp
 		ts = message['Date']
-		dt = datetime.datetime.strptime(ts, "%a, %d %b %Y %H:%M:%S +0000") - datetime.timedelta(hours=6)
-		dtAdjusted = dt.strftime("%Y-%m-%d / %H:%M:%S MST")
+		dtRaw = datetime.datetime.strptime(ts, "%a, %d %b %Y %H:%M:%S +0000") - datetime.timedelta(hours=6)
+		dt = dtRaw.strftime("%Y-%m-%d / %H:%M:%S MST")
 		
 		# Company
 		companyRaw = message.get_addresses('to')[0][0]
 		strCompany = unicodedata.normalize('NFKD', companyRaw).encode('ascii','ignore')
-		company = strCompany.split("@")[0].split("+")[-1] # unicode to str
+		company = strCompany.split("@")[0].split("+")[-1].split("_")[0] # unicode to str
 
 		# Status
 		statusRaw = message.get_subject()
@@ -56,22 +51,47 @@ else:
 		}[statusEmail]
 		status = f(statusEmail)
 
+		# Org ID
+		orgid = strCompany.split("@")[0].split("+")[-1].split("_")[-1]
+
+		# Body
+		bodyRaw = message.text_part.get_payload().decode(message.text_part.charset)
+		body = unicodedata.normalize('NFKD', bodyRaw).encode('ascii','ignore')
+
 		# Refresh(company, "Failed")
 
 		print "Subject: " + message.get_subject()
 		print "To: " + strCompany
 		# print "Object: " + Refresh(company, "Failed").company
 		if message.text_part != None:
-			print "Body: " + message.text_part.get_payload().decode(message.text_part.charset)
+			print "Body: " + body
 			print "================================="
 		print "Dashboard Data:"
 		print "Company: " + company
 		print "Status: " + status
-		print "D/T: " + dtAdjusted
+		print "D/T: " + dt
+		print "OrgID: " + orgid
 
-#####################################
-# CODE HERE TO EXTRACT REFRESH DATA #
-#####################################
+		# Insert Data 
+		cur.execute("""
+			INSERT INTO refresh (orgid, company, status, dt) 
+			VALUES (%s,%s,%s,%s) 
+			ON DUPLICATE KEY UPDATE 
+			company = VALUES (company),
+			status = VALUES (status),
+			dt = VALUES (dt)""", (orgid,company,status,dt))
+
+		db.commit()
+		# for row in cur.fetchall():
+		# print row
+
+		
+		db.close()
+
+		
+
+
+
 
 
 
@@ -87,5 +107,19 @@ else:
 
 
 
+# Refresh object
+class Refresh(object):
 
+	# Init
+	def __init__(self, company, status, timestamp, orgid):
+		self.company = company
+		self.status = status
+		self.timestamp = timestamp
+		self.orgid = orgid
 
+	def make_refresh(self):
+		print self.company
+
+#####################################
+# CODE HERE TO EXTRACT REFRESH DATA #
+#####################################

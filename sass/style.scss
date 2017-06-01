@@ -1,6 +1,6 @@
 // GLOBAL
 body {
-	background: #2c3e50;
+	background: black;
 	font-size: 12px;
 }
 
@@ -22,7 +22,9 @@ body {
 
 // CONTENT
 .dashboard-header {
-	color: #ecf0f1;
+	color: #00FF00;
+	font-family: 'VT323', monospace;
+	margin-top: 10px;
 }
 
 .refresh-status {
@@ -81,4 +83,61 @@ body {
 
 .modal-content {
 	border-radius: 0px;
+}
+
+// Cursor Blink
+.blinking-cursor {
+	font-weight: 100;
+	font-size: 35px;
+	color: #00FF00;
+	-webkit-animation: 1s blink step-end infinite;
+	-moz-animation: 1s blink step-end infinite;
+	-ms-animation: 1s blink step-end infinite;
+	-o-animation: 1s blink step-end infinite;
+	animation: 1s blink step-end infinite;
+}
+
+@keyframes "blink" {
+	from, to {
+		color: transparent;
+	}
+	50% {
+		color: #00FF00;
+	}
+}
+
+@-moz-keyframes blink {
+	from, to {
+		color: transparent;
+	}
+	50% {
+		color: #00FF00;
+	}
+}
+
+@-webkit-keyframes "blink" {
+	from, to {
+		color: transparent;
+	}
+	50% {
+		color: #00FF00;
+	}
+}
+
+@-ms-keyframes "blink" {
+	from, to {
+		color: transparent;
+	}
+	50% {
+		color: #00FF00;
+	}
+}
+
+@-o-keyframes "blink" {
+	from, to {
+		color: transparent;
+	}
+	50% {
+		color: #00FF00;
+	}
 }

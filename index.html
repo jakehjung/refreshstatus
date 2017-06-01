@@ -8,14 +8,16 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="js/custom.js"></script>
     <script src="js/mainController.js"></script>
 </head>
 <body ng-app="rfDashboard">
-	<h1 class="text-center dashboard-header">Predictive Pipeline Refresh Dashboard</h1>
 	<div class="container-fluid main-wrapper">
+		<h1 class="dashboard-header">C:\>Predictive Pipeline Refresh Dashboard<span class="blinking-cursor"><b>|</b></span></h1>
 		<div class="row" ng-controller="rfController">
 			<div class="col-md-2" ng-repeat="refresh in refreshes | refreshSort:'status'">
 				<div class="panel panel-default" 
