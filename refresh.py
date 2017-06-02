@@ -47,7 +47,8 @@ else:
 		    return {
 		        'Failure': 'Failed',
 		        'Success': 'Successful',
-		        'Delay': 'Delayed'
+		        'Delay': 'Delayed',
+		        'Start': 'Started'
 		}[statusEmail]
 		status = f(statusEmail)
 
@@ -72,21 +73,21 @@ else:
 		print "D/T: " + dt
 		print "OrgID: " + orgid
 
-		# Insert Data 
-		cur.execute("""
-			INSERT INTO refresh (orgid,company,status,dt,body) 
-			VALUES (%s,%s,%s,%s,%s) 
-			ON DUPLICATE KEY UPDATE 
-			company = VALUES (company),
-			status = VALUES (status),
-			dt = VALUES (dt),
-			body = VALUES (body)""", (orgid,company,status,dt,body))
+		if status != "Started":
+			# Insert Data 
+			cur.execute("""
+				INSERT INTO refresh (orgid,company,status,dt,body) 
+				VALUES (%s,%s,%s,%s,%s) 
+				ON DUPLICATE KEY UPDATE 
+				company = VALUES (company),
+				status = VALUES (status),
+				dt = VALUES (dt),
+				body = VALUES (body)""", (orgid,company,status,dt,body))
 
-		db.commit()
+			db.commit()
 
-		for row in cur.fetchall():
-			print row
-		
+			for row in cur.fetchall():
+				print row
 	db.close()
 
 		
