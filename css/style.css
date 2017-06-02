@@ -29,6 +29,7 @@ body {
   color: #00FF00;
   font-family: 'VT323', monospace;
   margin-top: 10px;
+  font-size: 65px;
 }
 
 /* line 30, ../sass/style.scss */
@@ -104,7 +105,7 @@ body {
 /* line 89, ../sass/style.scss */
 .blinking-cursor {
   font-weight: 100;
-  font-size: 35px;
+  font-size: 65px;
   color: #00FF00;
   -webkit-animation: 1s blink step-end infinite;
   -moz-animation: 1s blink step-end infinite;
