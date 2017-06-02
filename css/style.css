@@ -32,41 +32,41 @@ body {
   font-size: 65px;
 }
 
-/* line 30, ../sass/style.scss */
+/* line 31, ../sass/style.scss */
 .refresh-status {
   font-weight: bold;
   color: #ecf0f1;
 }
 
-/* line 35, ../sass/style.scss */
+/* line 36, ../sass/style.scss */
 .panel-default {
   border-radius: 0px;
 }
-/* line 37, ../sass/style.scss */
+/* line 38, ../sass/style.scss */
 .panel-default .company-heading {
   padding: 6px 8px;
   font-weight: bold;
   color: #ecf0f1;
 }
-/* line 41, ../sass/style.scss */
+/* line 42, ../sass/style.scss */
 .panel-default .company-heading a {
   color: #ecf0f1;
 }
-/* line 46, ../sass/style.scss */
+/* line 47, ../sass/style.scss */
 .panel-default .panel-body {
   padding: 7px;
 }
-/* line 48, ../sass/style.scss */
+/* line 49, ../sass/style.scss */
 .panel-default .panel-body p {
   color: #ecf0f1;
   margin: 0px;
 }
-/* line 52, ../sass/style.scss */
+/* line 53, ../sass/style.scss */
 .panel-default .panel-body a {
   color: #ecf0f1;
 }
 
-/* line 58, ../sass/style.scss */
+/* line 59, ../sass/style.scss */
 .rf-btn {
   font-size: 12px;
   font-weight: bold;
@@ -75,34 +75,34 @@ body {
   transition: all 0.3s;
   color: #2c3e50;
 }
-/* line 65, ../sass/style.scss */
+/* line 66, ../sass/style.scss */
 .rf-btn:hover {
   background: #bdc3c7;
   transition: all 0.3s;
 }
 
-/* line 71, ../sass/style.scss */
+/* line 72, ../sass/style.scss */
 .detail-text {
   color: #2c3e50 !important;
   font-size: 14px;
 }
 
-/* line 76, ../sass/style.scss */
+/* line 77, ../sass/style.scss */
 .modal-header {
   background: #2ecc71;
   color: #ecf0f1;
 }
-/* line 79, ../sass/style.scss */
+/* line 80, ../sass/style.scss */
 .modal-header h4 {
   font-weight: bold;
 }
 
-/* line 84, ../sass/style.scss */
+/* line 85, ../sass/style.scss */
 .modal-content {
   border-radius: 0px;
 }
 
-/* line 89, ../sass/style.scss */
+/* line 90, ../sass/style.scss */
 .blinking-cursor {
   font-weight: 100;
   font-size: 65px;
