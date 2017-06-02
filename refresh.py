@@ -86,7 +86,6 @@ else:
 
 		for row in cur.fetchall():
 			print row
-
 		
 	db.close()
 

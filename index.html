@@ -28,7 +28,7 @@
 						ng-class="{'bg-success': refresh.status === 'Successful',
 								'bg-fail': refresh.status === 'Failed',
 								'bg-delay': refresh.status === 'Delayed'}">
-						<a href="#" data-toggle="modal" data-target="#rfmodal{{$index}}">{{refresh.company}}</a>
+						<a href="#" class="clicked" data-toggle="modal" data-target="#rfmodal{{$index}}">{{refresh.company}}</a>
 					</div>
 					<div class="panel-body">
 						<div class="row">
@@ -43,7 +43,7 @@
 								<p>{{refresh.dt}}</p>
 							</div>
 							<div class="col-md-4 text-right">
-								<button class="btn rf-btn" data-toggle="modal" data-target="#rfmodal{{$index}}">More</button>
+								<button class="btn rf-btn" id="clicked" data-toggle="modal" data-target="#rfmodal{{$index}}">More</button>
 				    		    <!-- MODAL -->
 							    <div class="modal small fade" tabindex="-1" role="dialog" id="rfmodal{{$index}}">
 									<div class="modal-dialog" role="document">

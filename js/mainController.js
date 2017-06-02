@@ -1,5 +1,5 @@
 app.controller("rfController", ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
-
+	
 	$scope.displayData = function () {
 
 		$http.get('db.php').success(function(data) {
@@ -7,13 +7,21 @@ app.controller("rfController", ['$scope', '$http', '$timeout', function ($scope,
 	    	console.log(data);
 	    });
 	    
+
 		$timeout(function() {
 	    	$scope.displayData();
 	    },10000)
-	    
-		// $scope.renewData();
 
 	};
+
+	// setInterval(function() {
+	// 	if($scope.runInterval){
+ //            $scope.displayData();
+ //            console.log("Done");
+ //        }
+	// },1000)
+
+	
 
 	// $scope.renewData = function() {
 
