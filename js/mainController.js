@@ -37,19 +37,3 @@ app.controller("rfController", ['$scope', '$http', '$timeout', function ($scope,
 
 	
 }]);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

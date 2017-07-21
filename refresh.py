@@ -41,7 +41,8 @@ else:
 
 		# Status
 		statusRaw = message.get_subject()
-		statusEmail = unicodedata.normalize('NFKD', statusRaw).encode('ascii','ignore').split(" ")[3][1:-1] # unicode to str
+		statusEmail = unicodedata.normalize('NFKD', statusRaw).encode('ascii','ignore').split(" ")[2][1:-1] # unicode to str
+		print statusEmail
 		# change default email subject to readable str
 		def f(statusEmail):
 		    return {
@@ -87,7 +88,7 @@ else:
 			db.commit()
 
 			for row in cur.fetchall():
-				print row
+				print row # just print
 	db.close()
 
 		

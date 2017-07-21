@@ -1,12 +1,13 @@
 <?php
 	$servername = "localhost";
 	$username = "root";
-	$password = "root";
+	$password = "";
 	$dbname = "refresh";
 
 	$conn = mysqli_connect($servername, $username, $password, $dbname);
 	if (!$conn){
 		die("Connection failed: " .mysqli_connecet_error());
+		// outputs error to log file
 	}
 
 	$showData = "SELECT * FROM refresh.refresh";
