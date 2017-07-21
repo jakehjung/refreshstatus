@@ -10,7 +10,7 @@ import MySQLdb
 imapObj = imapclient.IMAPClient('imap.gmail.com', ssl=True)
 imapObj.login('refreshstatusc9@gmail.com', 'd2z4BJxeSUVv')
 imapObj.select_folder('Refreshes', readonly=False)
-UIDs = imapObj.search(['UNSEEN', 'FROM jake.jung@insidesales.com'])
+UIDs = imapObj.search(['UNSEEN', 'FROM DONOTREPLY@c9inc.com'])
 
 # Initialize DB Connection
 db = MySQLdb.connect(host="localhost",
