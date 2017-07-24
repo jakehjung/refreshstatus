@@ -31,18 +31,22 @@ else:
 
 		# Timestamp
 		ts = message['Date']
-		dtRaw = datetime.datetime.strptime(ts, "%a, %d %b %Y %H:%M:%S +0000") - datetime.timedelta(hours=6)
-		dt = dtRaw.strftime("%Y-%m-%d %H:%M:%S MST")
+		# dtRaw = datetime.datetime.strptime(ts, "%a, %d %b %Y %H:%M:%S +0000") - datetime.timedelta(hours=6)
+		# dt = dtRaw.strftime("%Y-%m-%d %H:%M:%S MST")
 		
 		# Company
-		companyRaw = message.get_addresses('to')[0][0]
-		strCompany = unicodedata.normalize('NFKD', companyRaw).encode('ascii','ignore')
-		company = strCompany.split("@")[0].split("+")[-1].split("_")[0] # unicode to str
+		companyRaw = message.get_addresses('to')
+		companyString = [tuple(map(str,eachTuple)) for eachTuple in companyRaw]
+		companyList = [i[0] for i in companyString]
+		companyFinal = [item for item in companyList if 'refreshstatusc9' in item][0]
+
+		# strCompany = unicodedata.normalize('NFKD', companyRaw).encode('ascii','ignore')
+		company = companyFinal.split("@")[0].split("+")[-1].split("_")[0] # unicode to str
 
 		# Status
 		statusRaw = message.get_subject()
 		statusEmail = unicodedata.normalize('NFKD', statusRaw).encode('ascii','ignore').split(" ")[2][1:-1] # unicode to str
-		print statusEmail
+		
 		# change default email subject to readable str
 		def f(statusEmail):
 		    return {
@@ -54,16 +58,16 @@ else:
 		status = f(statusEmail)
 
 		# Org ID
-		orgid = strCompany.split("@")[0].split("+")[-1].split("_")[-1]
+		orgid = companyFinal.split("@")[0].split("+")[-1].split("_")[-1]
 
 		# Body
-		bodyRaw = message.text_part.get_payload().decode(message.text_part.charset)
+		bodyRaw = message.html_part.get_payload().decode(message.html_part.charset)
 		body = unicodedata.normalize('NFKD', bodyRaw).encode('ascii','ignore')
 
 		# Refresh(company, "Failed")
 
 		print "Subject: " + message.get_subject()
-		print "To: " + strCompany
+		print "To: " + companyFinal
 		# print "Object: " + Refresh(company, "Failed").company
 		if message.text_part != None:
 			print "Body: " + body
@@ -71,24 +75,24 @@ else:
 		print "Dashboard Data:"
 		print "Company: " + company
 		print "Status: " + status
-		print "D/T: " + dt
+		print "D/T: " + ts
 		print "OrgID: " + orgid
 
-		if status != "Started":
-			# Insert Data 
-			cur.execute("""
-				INSERT INTO refresh (orgid,company,status,dt,body) 
-				VALUES (%s,%s,%s,%s,%s) 
-				ON DUPLICATE KEY UPDATE 
-				company = VALUES (company),
-				status = VALUES (status),
-				dt = VALUES (dt),
-				body = VALUES (body)""", (orgid,company,status,dt,body))
+		# if status != "Started":
+		# Insert Data 
+		cur.execute("""
+			INSERT INTO refresh (orgid,company,status,dt,body) 
+			VALUES (%s,%s,%s,%s,%s) 
+			ON DUPLICATE KEY UPDATE 
+			company = VALUES (company),
+			status = VALUES (status),
+			dt = VALUES (dt),
+			body = VALUES (body)""", (orgid,company,status,ts,body))
 
-			db.commit()
+		db.commit()
 
-			for row in cur.fetchall():
-				print row # just print
+		for row in cur.fetchall():
+			print row # just print
 	db.close()
 
 		

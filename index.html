@@ -17,17 +17,21 @@
 </head>
 <body ng-app="rfDashboard">
 	<div class="container-fluid main-wrapper">
-		<h1 class="dashboard-header">C:\>Predictive Pipeline Refresh Dashboard<span class="blinking-cursor"><b>|</b></span></h1>
+		<div>
+			<h1 class="dashboard-header" style="display:inline-block;">C:\>Predictive Pipeline Refresh Dashboard<span class="blinking-cursor"><b>|</b></span></h1>
+		</div>
 		<div class="row" ng-controller="rfController" ng-init="displayData()">
 			<div class="col-md-2" ng-repeat="refresh in refreshes | refreshSort:'status'">
 				<div class="panel panel-default" 
 					ng-class="{'bg-success': refresh.status === 'Successful',
-								'bg-fail': refresh.status === 'Failed',
-								'bg-delay': refresh.status === 'Delayed'}">
+							   'bg-fail': refresh.status === 'Failed',
+							   'bg-delay': refresh.status === 'Delayed',
+							   'bg-start': refresh.status === 'Started'}">
 					<div class="panel-heading company-heading"
 						ng-class="{'bg-success': refresh.status === 'Successful',
-								'bg-fail': refresh.status === 'Failed',
-								'bg-delay': refresh.status === 'Delayed'}">
+								   'bg-fail': refresh.status === 'Failed',
+								   'bg-delay': refresh.status === 'Delayed',
+								   'bg-start': refresh.status === 'Started'}">
 						<a href="#" class="clicked" data-toggle="modal" data-target="#rfmodal{{$index}}">{{refresh.company}}</a>
 					</div>
 					<div class="panel-body">
@@ -36,8 +40,9 @@
 								<p class="refresh-status">
 									<i class="fa fa-fw" 
 										ng-class="{'fa-exclamation-circle': refresh.status === 'Failed',
-													'fa-check-circle': refresh.status === 'Successful',
-													'fa-refresh': refresh.status === 'Delayed'}" 
+												   'fa-check-circle': refresh.status === 'Successful',
+												   'fa-refresh': refresh.status === 'Delayed',
+												   'fa-play': refresh.status === 'Started'}" 
 										aria-hidden="true"></i> Refresh <span id="rf-status">{{refresh.status}}</span>
 								</p>
 								<p>{{refresh.dt}}</p>
@@ -50,8 +55,9 @@
 										<div class="modal-content">
 											<div class="modal-header" 
 												ng-class="{'bg-success': refresh.status === 'Successful',
-															'bg-fail': refresh.status === 'Failed',
-															'bg-delay': refresh.status === 'Delayed'}">
+														   'bg-fail': refresh.status === 'Failed',
+														   'bg-delay': refresh.status === 'Delayed',
+														   'bg-start': refresh.status === 'Started'}">
 										    	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 										    		<span aria-hidden="true">&times;</span>
 										    	</button>

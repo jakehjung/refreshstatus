@@ -10,7 +10,7 @@ app.controller("rfController", ['$scope', '$http', '$timeout', function ($scope,
 
 		$timeout(function() {
 	    	$scope.displayData();
-	    },10000)
+	    },300000)
 
 	};
 

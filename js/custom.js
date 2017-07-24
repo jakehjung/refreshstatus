@@ -11,8 +11,11 @@ app.filter('refreshSort', function() {
             case 'Delayed':
                 return 2;
 
-            case 'Successful':
+            case 'Started':
                 return 3;
+
+            case 'Successful':
+                return 4;
         }
 
     };
