@@ -36,7 +36,7 @@
 					</div>
 					<div class="panel-body">
 						<div class="row padding-0">
-							<div class="col-md-8 padding-0">
+							<div class="col-md-12 padding-0">
 								<p class="refresh-status">
 									<i class="fa fa-fw" 
 										ng-class="{'fa-exclamation-circle': refresh.status === 'Failed',
@@ -47,8 +47,8 @@
 								</p>
 								<p>{{refresh.dt}}</p>
 							</div>
-							<div class="col-md-4 text-right padding-0">
-								<button class="btn rf-btn" id="clicked" data-toggle="modal" data-target="#rfmodal{{$index}}">More</button>
+							<!-- <div class="col-md-4 text-right padding-0">
+								<button class="btn rf-btn" id="clicked" data-toggle="modal" data-target="#rfmodal{{$index}}">More</button> -->
 				    		    <!-- MODAL -->
 							    <div class="modal small fade" tabindex="-1" role="dialog" id="rfmodal{{$index}}">
 									<div class="modal-dialog" role="document">
@@ -74,8 +74,8 @@
 											</div>
 										</div>
 									</div>
-								</div>
-							</div>
+							<!-- 	</div>
+							</div> -->
 						</div>
 					</div>
 				</div>
