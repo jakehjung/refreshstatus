@@ -9,27 +9,39 @@ body {
   border: 0px;
 }
 
-/* line 12, ../sass/style.scss */
-.bg-success {
-  background: #2ecc71 !important;
+/* line 11, ../sass/style.scss */
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
-/* line 15, ../sass/style.scss */
+/* line 16, ../sass/style.scss */
+.padding-0 {
+  padding-right: 5px !important;
+  padding-left: 5px !important;
+}
+
+/* line 22, ../sass/style.scss */
+.bg-success {
+  background: #00B700 !important;
+}
+
+/* line 25, ../sass/style.scss */
 .bg-fail {
   background: #e74c3c !important;
 }
 
-/* line 18, ../sass/style.scss */
+/* line 28, ../sass/style.scss */
 .bg-delay {
   background: #f39c12 !important;
 }
 
-/* line 21, ../sass/style.scss */
+/* line 31, ../sass/style.scss */
 .bg-start {
   background: #3498db !important;
 }
 
-/* line 26, ../sass/style.scss */
+/* line 36, ../sass/style.scss */
 .dashboard-header {
   color: #00FF00;
   font-family: 'VT323', monospace;
@@ -37,41 +49,50 @@ body {
   font-size: 65px;
 }
 
-/* line 33, ../sass/style.scss */
+/* line 43, ../sass/style.scss */
 .refresh-status {
   font-weight: bold;
   color: #ecf0f1;
 }
 
-/* line 38, ../sass/style.scss */
+/* line 48, ../sass/style.scss */
 .panel-default {
+  margin-bottom: 10px;
   border-radius: 0px;
 }
-/* line 40, ../sass/style.scss */
-.panel-default .company-heading {
-  padding: 6px 8px;
-  font-weight: bold;
-  color: #ecf0f1;
-}
-/* line 44, ../sass/style.scss */
-.panel-default .company-heading a {
-  color: #ecf0f1;
-}
-/* line 49, ../sass/style.scss */
-.panel-default .panel-body {
-  padding: 7px;
-}
 /* line 51, ../sass/style.scss */
+.panel-default .panel-heading {
+  padding: 5px 15px;
+}
+/* line 53, ../sass/style.scss */
+.panel-default .panel-heading .company-heading {
+  font-weight: bold;
+  font-size: 30px;
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #ecf0f1;
+}
+/* line 61, ../sass/style.scss */
+.panel-default .panel-heading .company-heading a {
+  color: #ecf0f1;
+}
+/* line 67, ../sass/style.scss */
+.panel-default .panel-body {
+  padding: 5px;
+}
+/* line 69, ../sass/style.scss */
 .panel-default .panel-body p {
   color: #ecf0f1;
   margin: 0px;
 }
-/* line 55, ../sass/style.scss */
+/* line 73, ../sass/style.scss */
 .panel-default .panel-body a {
   color: #ecf0f1;
 }
 
-/* line 61, ../sass/style.scss */
+/* line 79, ../sass/style.scss */
 .rf-btn {
   font-size: 12px;
   font-weight: bold;
@@ -80,34 +101,34 @@ body {
   transition: all 0.3s;
   color: #2c3e50;
 }
-/* line 68, ../sass/style.scss */
+/* line 86, ../sass/style.scss */
 .rf-btn:hover {
   background: #bdc3c7;
   transition: all 0.3s;
 }
 
-/* line 74, ../sass/style.scss */
+/* line 92, ../sass/style.scss */
 .detail-text {
   color: #2c3e50 !important;
   font-size: 14px;
 }
 
-/* line 79, ../sass/style.scss */
+/* line 97, ../sass/style.scss */
 .modal-header {
   background: #2ecc71;
   color: #ecf0f1;
 }
-/* line 82, ../sass/style.scss */
+/* line 100, ../sass/style.scss */
 .modal-header h4 {
   font-weight: bold;
 }
 
-/* line 87, ../sass/style.scss */
+/* line 105, ../sass/style.scss */
 .modal-content {
   border-radius: 0px;
 }
 
-/* line 92, ../sass/style.scss */
+/* line 110, ../sass/style.scss */
 .blinking-cursor {
   font-weight: 100;
   font-size: 65px;

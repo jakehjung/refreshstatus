@@ -16,27 +16,27 @@
     <script src="js/mainController.js"></script>
 </head>
 <body ng-app="rfDashboard">
-	<div class="container-fluid main-wrapper">
+	<div class="container-fluid main-wrapper padding-0">
 		<div>
 			<h1 class="dashboard-header" style="display:inline-block;">C:\>Predictive Pipeline Refresh Dashboard<span class="blinking-cursor"><b>|</b></span></h1>
 		</div>
-		<div class="row" ng-controller="rfController" ng-init="displayData()">
-			<div class="col-md-2" ng-repeat="refresh in refreshes | refreshSort:'status'">
+		<div class="row padding-0" ng-controller="rfController" ng-init="displayData()">
+			<div class="col-md-2 padding-0" ng-repeat="refresh in refreshes | refreshSort:'status'">
 				<div class="panel panel-default" 
 					ng-class="{'bg-success': refresh.status === 'Successful',
 							   'bg-fail': refresh.status === 'Failed',
 							   'bg-delay': refresh.status === 'Delayed',
 							   'bg-start': refresh.status === 'Started'}">
-					<div class="panel-heading company-heading"
+					<div class="panel-heading"
 						ng-class="{'bg-success': refresh.status === 'Successful',
 								   'bg-fail': refresh.status === 'Failed',
 								   'bg-delay': refresh.status === 'Delayed',
 								   'bg-start': refresh.status === 'Started'}">
-						<a href="#" class="clicked" data-toggle="modal" data-target="#rfmodal{{$index}}">{{refresh.company}}</a>
+						<div class="company-heading"><a href="#" class="clicked" data-toggle="modal" data-target="#rfmodal{{$index}}">{{refresh.company}}</a></div>
 					</div>
 					<div class="panel-body">
-						<div class="row">
-							<div class="col-md-8">
+						<div class="row padding-0">
+							<div class="col-md-8 padding-0">
 								<p class="refresh-status">
 									<i class="fa fa-fw" 
 										ng-class="{'fa-exclamation-circle': refresh.status === 'Failed',
@@ -47,7 +47,7 @@
 								</p>
 								<p>{{refresh.dt}}</p>
 							</div>
-							<div class="col-md-4 text-right">
+							<div class="col-md-4 text-right padding-0">
 								<button class="btn rf-btn" id="clicked" data-toggle="modal" data-target="#rfmodal{{$index}}">More</button>
 				    		    <!-- MODAL -->
 							    <div class="modal small fade" tabindex="-1" role="dialog" id="rfmodal{{$index}}">

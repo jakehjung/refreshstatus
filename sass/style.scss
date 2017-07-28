@@ -8,9 +8,19 @@ body {
 	border: 0px;
 }
 
+.row {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.padding-0 {
+	padding-right: 5px !important;
+	padding-left: 5px !important;
+}
+
 // COLORS
 .bg-success {
-	background: #2ecc71 !important;
+	background: #00B700 !important;
 }
 .bg-fail {
 	background: #e74c3c !important;
@@ -36,18 +46,26 @@ body {
 }
 
 .panel-default {
+	margin-bottom: 10px;
 	border-radius: 0px;
-	.company-heading {
-		padding: 6px 8px;
-		font-weight: bold;
-		// background: #e74c3c;
-		a {
+	.panel-heading {
+		padding: 5px 15px;
+		.company-heading {
+			font-weight: bold;
+			font-size: 30px;
+			width: 150px;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			// background: #e74c3c;
+			a {
+				color: #ecf0f1;
+			}
 			color: #ecf0f1;
 		}
-		color: #ecf0f1;
 	}
 	.panel-body {
-		padding: 7px;
+		padding: 5px;
 		p {
 			color: #ecf0f1;
 			margin: 0px;
