@@ -68,7 +68,7 @@ body {
 .panel-default .panel-heading .company-heading {
   font-weight: bold;
   font-size: 30px;
-  width: 150px;
+  width: 200px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
