@@ -67,8 +67,8 @@ body {
 /* line 53, ../sass/style.scss */
 .panel-default .panel-heading .company-heading {
   font-weight: bold;
-  font-size: 30px;
-  width: 200px;
+  font-size: 25px;
+  width: 160px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
