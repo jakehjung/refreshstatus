@@ -18,7 +18,7 @@
 <body ng-app="rfDashboard">
 	<div class="container-fluid main-wrapper padding-0">
 		<div>
-			<h1 class="dashboard-header" style="display:inline-block;">C:\>Predictive Pipeline Refresh Dashboard<span class="blinking-cursor"><b>|</b></span></h1>
+			<h1 class="dashboard-header" style="display:inline-block;">C:\>Predictive Pipeline Refresh Dashboard<!-- <span class="blinking-cursor"><b>|</b></span> --></h1>
 		</div>
 		<div class="row padding-0" ng-controller="rfController" ng-init="displayData()">
 			<div class="col-md-2 padding-0" ng-repeat="refresh in refreshes | refreshSort:'status'">
