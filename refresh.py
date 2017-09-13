@@ -15,7 +15,7 @@ UIDs = imapObj.search(['UNSEEN', 'FROM DONOTREPLY@c9inc.com'])
 # Initialize DB Connection
 db = MySQLdb.connect(host="localhost",
                      user="root",
-                     passwd="root",
+                     passwd="",
                      db="refresh") 
 cur = db.cursor()
 
@@ -56,6 +56,8 @@ else:
 		        'Start': 'Started'
 		}[statusEmail]
 		status = f(statusEmail)
+
+		
 
 		# Org ID
 		orgid = companyFinal.split("@")[0].split("+")[-1].split("_")[-1]
