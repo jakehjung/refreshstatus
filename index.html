@@ -20,7 +20,7 @@
 		<div>
 			<h1 class="dashboard-header" style="display:inline-block;">C:\>Predictive Pipeline Refresh Dashboard<!-- <span class="blinking-cursor"><b>|</b></span> --></h1>
 		</div>
-		<div class="row padding-0" ng-controller="rfController" ng-init="displayData()">
+		<div class="row padding-0" ng-controller="rfController" ng-init="startTimer()">
 			<div class="col-md-2 col-sm-6 padding-0" ng-repeat="refresh in refreshes | refreshSort:'status'">
 				<div class="panel panel-default" 
 					ng-class="{'bg-success': refresh.status === 'Successful',
@@ -32,7 +32,9 @@
 								   'bg-fail': refresh.status === 'Failed',
 								   'bg-delay': refresh.status === 'Delayed',
 								   'bg-start': refresh.status === 'Started'}">
-						<div class="company-heading"><a href="#" class="clicked" data-toggle="modal" data-target="#rfmodal{{$index}}">{{refresh.company}}</a></div>
+						<div class="company-heading">
+							<a href="#" class="clicked" data-toggle="modal" data-target="#rfmodal{{$index}}" data-backdrop="static" data-keyboard="false" ng-click="stopTimer()">{{refresh.company}}</a>
+						</div>
 					</div>
 					<div class="panel-body">
 						<div class="row padding-0">
@@ -58,7 +60,7 @@
 														   'bg-fail': refresh.status === 'Failed',
 														   'bg-delay': refresh.status === 'Delayed',
 														   'bg-start': refresh.status === 'Started'}">
-										    	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										    	<button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="startTimer()">
 										    		<span aria-hidden="true">&times;</span>
 										    	</button>
 										    	<h4 class="modal-title text-center">{{refresh.company}}</h4>
@@ -70,7 +72,7 @@
 											    <p class="detail-text"><b>Body</b>: {{refresh.body}}</p>
 											</div>
 											<div class="modal-footer">
-												<button type="button rf-btn" class="btn rf-btn" data-dismiss="modal">Close</button>
+												<button type="button rf-btn" class="btn rf-btn" data-dismiss="modal" ng-click="startTimer()">Close</button>
 											</div>
 										</div>
 									</div>

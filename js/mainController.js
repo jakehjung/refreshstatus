@@ -1,18 +1,43 @@
-app.controller("rfController", ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
+app.controller("rfController", ['$scope', '$http', '$timeout', '$interval', function ($scope, $http, $timeout, $interval) {
 	
+	// $scope.displayData = function () {
+
+	// 	$http.get('db.php').success(function(data) {
+	//     	$scope.refreshes = data;
+	//     	console.log(data);
+	//     });
+	    
+
+	// 	$timeout(function() {
+	//     	$scope.displayData();
+	//     },300000)
+
+	// };
+
+	// $scope.modalopen = angular.element('body').hasClass('modal-open');
+
+	$scope.timer = null;
+
 	$scope.displayData = function () {
 
 		$http.get('db.php').success(function(data) {
 	    	$scope.refreshes = data;
-	    	console.log(data);
 	    });
-	    
-
-		$timeout(function() {
-	    	$scope.displayData();
-	    },300000)
-
+	
 	};
+
+	$scope.startTimer = function() {
+		$scope.timer = $interval(function() {
+			$scope.displayData();
+		}, 1000)
+	}
+
+	$scope.stopTimer = function() {
+		if(angular.isDefined($scope.timer)) {
+			$interval.cancel($scope.timer);
+		}
+	}
+
 
 	// setInterval(function() {
 	// 	if($scope.runInterval){
