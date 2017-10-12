@@ -15,10 +15,15 @@
     <script src="js/custom.js"></script>
     <script src="js/mainController.js"></script>
 </head>
-<body ng-app="rfDashboard">
+<body ng-app="rfDashboard" style="background: url('img/stars.gif'); background-size: cover;">
+	<!-- <div>
+		<div style="position: fixed; z-index: -999; width: 120%; height: 120%; right: -230px;">
+			<iframe width="100%" height="100%" src="https://www.youtube.com/embed/voWpbz1De_M?controls=0&showinfo=0&rel=0&autoplay=1&loop=1" frameborder="0"></iframe>
+		</div>
+	</div> -->
 	<div class="container-fluid main-wrapper padding-0">
-		<div>
-			<h1 class="dashboard-header" style="display:inline-block;">C:\>Predictive Pipeline Refresh Dashboard<!-- <span class="blinking-cursor"><b>|</b></span> --></h1>
+		<div class="text-center">
+			<h1 class="dashboard-header" style="display:inline-block;"><img src="img/logo1.png"><!--Prective Piepine Dashboard<span class="blinking-cursor"><b>|</b></span> --></h1>
 		</div>
 		<div class="row padding-0" ng-controller="rfController" ng-init="startTimer()">
 			<div class="col-md-2 col-sm-6 padding-0" ng-repeat="refresh in refreshes | refreshSort:'status'">
@@ -49,35 +54,32 @@
 								</p>
 								<p>{{refresh.dt}}</p>
 							</div>
-							<!-- <div class="col-md-4 text-right padding-0">
-								<button class="btn rf-btn" id="clicked" data-toggle="modal" data-target="#rfmodal{{$index}}">More</button> -->
-				    		    <!-- MODAL -->
-							    <div class="modal small fade" tabindex="-1" role="dialog" id="rfmodal{{$index}}">
-									<div class="modal-dialog" role="document">
-										<div class="modal-content">
-											<div class="modal-header" 
-												ng-class="{'bg-success': refresh.status === 'Successful',
-														   'bg-fail': refresh.status === 'Failed',
-														   'bg-delay': refresh.status === 'Delayed',
-														   'bg-start': refresh.status === 'Started'}">
-										    	<button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="startTimer()">
-										    		<span aria-hidden="true">&times;</span>
-										    	</button>
-										    	<h4 class="modal-title text-center">{{refresh.company}}</h4>
-										  	</div>
-											<div class="modal-body text-left">
-											    <p class="detail-text"><b>Status</b>: {{refresh.status}}</p>
-											    <p class="detail-text"><b>TimeStamp</b>: {{refresh.dt}}</p>
-											    <p class="detail-text"><b>OrgID</b>: {{refresh.orgid}}</p>
-											    <p class="detail-text"><b>Body</b>: {{refresh.body}}</p>
-											</div>
-											<div class="modal-footer">
-												<button type="button rf-btn" class="btn rf-btn" data-dismiss="modal" ng-click="startTimer()">Close</button>
-											</div>
+				    		<!-- MODAL -->
+						    <div class="modal small fade" tabindex="-1" role="dialog" id="rfmodal{{$index}}">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header" 
+											ng-class="{'bg-success': refresh.status === 'Successful',
+													   'bg-fail': refresh.status === 'Failed',
+													   'bg-delay': refresh.status === 'Delayed',
+													   'bg-start': refresh.status === 'Started'}">
+									    	<button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="startTimer()">
+									    		<span aria-hidden="true">&times;</span>
+									    	</button>
+									    	<h4 class="modal-title text-center">{{refresh.company}}</h4>
+									  	</div>
+										<div class="modal-body text-left">
+										    <p class="detail-text"><b>Status</b>: {{refresh.status}}</p>
+										    <p class="detail-text"><b>TimeStamp</b>: {{refresh.dt}}</p>
+										    <p class="detail-text"><b>OrgID</b>: {{refresh.orgid}}</p>
+										    <p class="detail-text"><b>Body</b>: {{refresh.body}}</p>
+										</div>
+										<div class="modal-footer">
+											<button type="button rf-btn" class="btn rf-btn" data-dismiss="modal" ng-click="startTimer()">Close</button>
 										</div>
 									</div>
-							<!-- 	</div>
-							</div> -->
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

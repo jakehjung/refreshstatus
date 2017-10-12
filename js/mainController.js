@@ -22,6 +22,7 @@ app.controller("rfController", ['$scope', '$http', '$timeout', '$interval', func
 
 		$http.get('db.php').success(function(data) {
 	    	$scope.refreshes = data;
+	    	console.log("displayData was called!");
 	    });
 	
 	};
@@ -29,7 +30,7 @@ app.controller("rfController", ['$scope', '$http', '$timeout', '$interval', func
 	$scope.startTimer = function() {
 		$scope.timer = $interval(function() {
 			$scope.displayData();
-		}, 1000)
+		}, 2000)
 	}
 
 	$scope.stopTimer = function() {

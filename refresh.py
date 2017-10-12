@@ -15,7 +15,7 @@ UIDs = imapObj.search(['UNSEEN', 'FROM DONOTREPLY@c9inc.com'])
 # Initialize DB Connection
 db = MySQLdb.connect(host="localhost",
                      user="root",
-                     passwd="",
+                     passwd="root",
                      db="refresh") 
 cur = db.cursor()
 
