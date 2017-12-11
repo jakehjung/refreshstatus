@@ -1,21 +1,5 @@
-app.controller("rfController", ['$scope', '$http', '$timeout', '$interval', function ($scope, $http, $timeout, $interval) {
+app.controller("rfController", ['$scope', '$http', '$timeout', '$interval', '$window', function ($scope, $http, $timeout, $interval, $window) {
 	
-	// $scope.displayData = function () {
-
-	// 	$http.get('db.php').success(function(data) {
-	//     	$scope.refreshes = data;
-	//     	console.log(data);
-	//     });
-	    
-
-	// 	$timeout(function() {
-	//     	$scope.displayData();
-	//     },300000)
-
-	// };
-
-	// $scope.modalopen = angular.element('body').hasClass('modal-open');
-
 	$scope.timer = null;
 
 	$scope.displayData = function () {
@@ -39,27 +23,16 @@ app.controller("rfController", ['$scope', '$http', '$timeout', '$interval', func
 		}
 	}
 
+	$scope.deleteNode = function(index) {
+		var orgId_r = angular.element(document.getElementsByClassName("orgid"));
+		var orgid = orgId_r[index].attributes['value'].value;
+		var confirmDelete = $window.confirm('Are you sure you want to delete?');
 
-	// setInterval(function() {
-	// 	if($scope.runInterval){
- //            $scope.displayData();
- //            console.log("Done");
- //        }
-	// },1000)
-
-	
-
-	// $scope.renewData = function() {
-
-	// 	if (!$("#rfmodal0").data('bs.modal').isShown) {
-	// 		$timeout(function() {
-	// 	    	$scope.displayData();
-	// 	    },10000)
-	//     }
-
-	// }
-
-	
-
+		if(confirmDelete) {
+			$http.get('delete.php?orgid=' + orgid).success(function() {
+				$window.location.reload();
+			});
+		}
+	}
 	
 }]);

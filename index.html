@@ -23,9 +23,9 @@
 	</div> -->
 	<div class="container-fluid main-wrapper padding-0">
 		<div class="text-center">
-			<h1 class="dashboard-header" style="display:inline-block;">Prective Piepine Dashboard<a href="index2.html" style="font-size:12px;"> Star Wars View</a></h1>
+			<h1 class="dashboard-header" style="display:inline-block;">Predictive Pipeline</h1>
 		</div>
-		<div class="row padding-0" ng-controller="rfController" ng-init="startTimer()">
+		<div class="row padding-0" ng-controller="rfController" ng-init="startTimer()" ng-init="init()">
 			<div class="col-md-2 col-sm-6 padding-0" ng-repeat="refresh in refreshes | refreshSort:'status'">
 				<div class="panel panel-default" 
 					ng-class="{'bg-success': refresh.status === 'Successful',
@@ -65,16 +65,17 @@
 													   'bg-start': refresh.status === 'Started'}">
 									    	<button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="startTimer()">
 									    		<span aria-hidden="true">&times;</span>
-									    	</button>
+											</button>
 									    	<h4 class="modal-title text-center">{{refresh.company}}</h4>
 									  	</div>
 										<div class="modal-body text-left">
 										    <p class="detail-text"><b>Status</b>: {{refresh.status}}</p>
 										    <p class="detail-text"><b>TimeStamp</b>: {{refresh.dt}}</p>
-										    <p class="detail-text"><b>OrgID</b>: {{refresh.orgid}}</p>
+										    <p class="detail-text orgid" value="{{refresh.orgid}}"><b>OrgID</b>: {{refresh.orgid}}</p>
 										    <p class="detail-text"><b>Body</b>: {{refresh.body}}</p>
 										</div>
 										<div class="modal-footer">
+											<button type="button rf-btn" class="btn btn-danger" ng-click="deleteNode($index)">Delete</button>												
 											<button type="button rf-btn" class="btn rf-btn" data-dismiss="modal" ng-click="startTimer()">Close</button>
 										</div>
 									</div>

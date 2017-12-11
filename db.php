@@ -5,6 +5,7 @@
 	$dbname = "refresh";
 
 	$conn = mysqli_connect($servername, $username, $password, $dbname);
+
 	if (!$conn){
 		die("Connection failed: " .mysqli_connecet_error());
 		// outputs error to log file
@@ -21,6 +22,8 @@
 	} else {
 		echo "0 results";
 	};
+	
 	echo json_encode($data);
 	mysqli_close($conn);
 ?>
+
