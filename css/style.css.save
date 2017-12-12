@@ -1,0 +1,162 @@
+/* line 2, ../sass/style.scss */
+body {
+  background: black;
+  font-size: 12px;
+}
+
+/* line 7, ../sass/style.scss */
+.panel {
+  border: 0px;
+}
+
+/* line 12, ../sass/style.scss */
+.bg-success {
+  background: #2ecc71 !important;
+}
+
+/* line 15, ../sass/style.scss */
+.bg-fail {
+  background: #e74c3c !important;
+}
+
+/* line 18, ../sass/style.scss */
+.bg-delay {
+  background: #f39c12 !important;
+}
+
+/* line 21, ../sass/style.scss */
+.bg-start {
+  background: #3498db !important;
+}
+
+/* line 26, ../sass/style.scss */
+.dashboard-header {
+  color: #00FF00;
+  font-family: 'VT323', monospace;
+  margin-top: 10px;
+  font-size: 65px;
+}
+
+/* line 33, ../sass/style.scss */
+.refresh-status {
+  font-weight: bold;
+  color: #ecf0f1;
+}
+
+/* line 38, ../sass/style.scss */
+.panel-default {
+  border-radius: 0px;
+}
+/* line 40, ../sass/style.scss */
+.panel-default .company-heading {
+  padding: 6px 8px;
+  font-weight: bold;
+  color: #FFF;
+  font-size:30px;
+}
+/* line 44, ../sass/style.scss */
+.panel-default .company-heading a {
+  color: #ecf0f1;
+}
+/* line 49, ../sass/style.scss */
+.panel-default .panel-body {
+  padding: 7px;
+}
+/* line 51, ../sass/style.scss */
+.panel-default .panel-body p {
+ecf0f1  color: #ecf0f1;
+  margin: 0px;
+}
+/* line 55, ../sass/style.scss */
+.panel-default .panel-body a {
+  color: #ecf0f1;
+}
+
+/* line 61, ../sass/style.scss */
+.rf-btn {
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 0px;
+  background: #ecf0f1;
+  transition: all 0.3s;
+  color: #2c3e50;
+}
+/* line 68, ../sass/style.scss */
+.rf-btn:hover {
+  background: #bdc3c7;
+  transition: all 0.3s;
+}
+
+/* line 74, ../sass/style.scss */
+.detail-text {
+  color: #2c3e50 !important;
+  font-size: 14px;
+}
+
+/* line 79, ../sass/style.scss */
+.modal-header {
+  background: #2ecc71;
+  color: #ecf0f1;
+}
+/* line 82, ../sass/style.scss */
+.modal-header h4 {
+  font-weight: bold;
+}
+
+/* line 87, ../sass/style.scss */
+.modal-content {
+  border-radius: 0px;
+}
+
+/* line 92, ../sass/style.scss */
+.blinking-cursor {
+  font-weight: 100;
+  font-size: 65px;
+  color: #00FF00;
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+}
+
+@keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #00FF00;
+  }
+}
+@-moz-keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #00FF00;
+  }
+}
+@-webkit-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #00FF00;
+  }
+}
+@-ms-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #00FF00;
+  }
+}
+@-o-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #00FF00;
+  }
+}
