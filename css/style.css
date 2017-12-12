@@ -45,7 +45,8 @@ body {
 .dashboard-header {
   color: #00FF00;
   font-family: 'VT323', monospace;
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-bottom:50px;
   font-size: 65px;
 }
 
