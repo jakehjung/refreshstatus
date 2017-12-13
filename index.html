@@ -16,11 +16,6 @@
     <script src="js/mainController.js"></script>
 </head>
 <body ng-app="rfDashboard">
-	<!-- <div>
-		<div style="position: fixed; z-index: -999; width: 120%; height: 120%; right: -230px;">
-			<iframe width="100%" height="100%" src="https://www.youtube.com/embed/voWpbz1De_M?controls=0&showinfo=0&rel=0&autoplay=1&loop=1" frameborder="0"></iframe>
-		</div>
-	</div> -->
 	<div class="container-fluid main-wrapper padding-0">
 		<div class="text-center">
 			<h1 class="dashboard-header" style="display:inline-block;">Predictive Pipeline</h1>
@@ -69,7 +64,16 @@
 									    	<h4 class="modal-title text-center">{{refresh.company}}</h4>
 									  	</div>
 										<div class="modal-body text-left">
-										    <p class="detail-text"><b>Status</b>: {{refresh.status}}</p>
+											<p class="detail-text" style="display:inline-block"><b>Status</b>: 
+												<select id="{{$index}}">
+													<option value="{{refresh.status}}">{{refresh.status}}</option>
+													<option value="Failed" ng-if="refresh.status != 'Failed'">Failed</option>
+													<option value="Successful" ng-if="refresh.status != 'Successful'">Successful</option>
+													<option value="Delayed" ng-if="refresh.status != 'Delayed'">Delayed</option>
+													<option value="Started" ng-if="refresh.status != 'Started'">Started</option>
+												</select>
+											</p>
+											<button ng-click="editNode($index)">Change</button>
 										    <p class="detail-text"><b>TimeStamp</b>: {{refresh.dt}}</p>
 										    <p class="detail-text orgid" value="{{refresh.orgid}}"><b>OrgID</b>: {{refresh.orgid}}</p>
 										    <p class="detail-text"><b>Body</b>: {{refresh.body}}</p>
@@ -85,7 +89,6 @@
 					</div>
 				</div>
 			</div>
-
 			<!--MODAL WINDOW--> 
 			<script type="text/ng-template" id="refreshContent.html">
 				<div class="modal-header">
@@ -97,10 +100,6 @@
 				</div>
 				<div class="modal-footer">
 			</script>
-
-			
-
-
 		</div>
 	</div>
 
