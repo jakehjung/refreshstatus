@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Refresh Dashboard</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/mainController.js"></script>
+</head>
+<body ng-app="rfDashboard">
+	<div class="container-fluid main-wrapper padding-0">
+		<div class="text-center">
+			<h1 class="dashboard-header" style="display:inline-block;" id="page_title"></h1>
+		</div>
+		<div class="row padding-0" ng-controller="rfController" ng-init="startTimer()" ng-init="init()">
+			<div class="col-md-2 col-sm-6 padding-0" ng-repeat="refresh in refreshes | refreshSort:'status'">
+				<div class="panel panel-default" 
+					ng-class="{'bg-success': refresh.status === 'Successful',
+							   'bg-fail': refresh.status === 'Failed',
+							   'bg-delay': refresh.status === 'Delayed',
+							   'bg-start': refresh.status === 'Started'}">
+					<div class="panel-heading"
+						ng-class="{'bg-success': refresh.status === 'Successful',
+								   'bg-fail': refresh.status === 'Failed',
+								   'bg-delay': refresh.status === 'Delayed',
+								   'bg-start': refresh.status === 'Started'}">
+						<div class="company-heading">
+							<a href="#" class="clicked" data-toggle="modal" data-target="#rfmodal{{$index}}" data-backdrop="static" data-keyboard="false" ng-click="stopTimer()">{{refresh.company}}</a>
+						</div>
+					</div>
+					<div class="panel-body">
+						<div class="row padding-0">
+							<div class="col-md-12 padding-0">
+								<p class="refresh-status">
+									<i class="fa fa-fw" 
+										ng-class="{'fa-exclamation-circle': refresh.status === 'Failed',
+												   'fa-check-circle': refresh.status === 'Successful',
+												   'fa-refresh': refresh.status === 'Delayed',
+												   'fa-play': refresh.status === 'Started'}" 
+										aria-hidden="true"></i> Refresh <span id="rf-status">{{refresh.status}}</span>
+								</p>
+								<p>{{refresh.dt}}</p>
+							</div>
+				    		<!-- MODAL -->
+						    <div class="modal small fade" tabindex="-1" role="dialog" id="rfmodal{{$index}}">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header" 
+											ng-class="{'bg-success': refresh.status === 'Successful',
+													   'bg-fail': refresh.status === 'Failed',
+													   'bg-delay': refresh.status === 'Delayed',
+													   'bg-start': refresh.status === 'Started'}">
+									    	<button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="startTimer()">
+									    		<span aria-hidden="true">&times;</span>
+											</button>
+									    	<h4 class="modal-title text-center">{{refresh.company}}</h4>
+									  	</div>
+										<div class="modal-body text-left">
+											<p class="detail-text" style="display:inline-block"><b>Status</b>: 
+												<select id="{{$index}}">
+													<option value="{{refresh.status}}">{{refresh.status}}</option>
+													<option value="Failed" ng-if="refresh.status != 'Failed'">Failed</option>
+													<option value="Successful" ng-if="refresh.status != 'Successful'">Successful</option>
+													<option value="Delayed" ng-if="refresh.status != 'Delayed'">Delayed</option>
+													<option value="Started" ng-if="refresh.status != 'Started'">Started</option>
+												</select>
+											</p>
+											<button ng-click="editNode($index)" style="position:absolute">Change</button>
+										    <p class="detail-text"><b>TimeStamp</b>: {{refresh.dt}}</p>
+										    <p class="detail-text orgid" value="{{refresh.orgid}}"><b>OrgID</b>: {{refresh.orgid}}</p>
+										    <p class="detail-text"><b>Body</b>: {{refresh.body}}</p>
+										</div>
+										<div class="modal-footer">
+											<button type="button rf-btn" class="btn btn-danger" ng-click="deleteNode($index)">Delete</button>												
+											<button type="button rf-btn" class="btn rf-btn" data-dismiss="modal" ng-click="startTimer()">Close</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--MODAL WINDOW--> 
+			<script type="text/ng-template" id="refreshContent.html">
+				<div class="modal-header">
+					<h3>Company: {{ refresh.name }}</h3>
+				</div>
+				<div class="modal-body">
+				    Detail:<br />
+				    {{ refresh.comment }}
+				</div>
+				<div class="modal-footer">
+			</script>
+		</div>
+	</div>
+	<style>
+			/* customizable snowflake styling */
+			.snowflake {
+			  color: #fff;
+			  font-size: 1em;
+			  font-family: Arial, sans-serif;
+			  text-shadow: 0 0 5px #000;
+			}
+			
+			@-webkit-keyframes snowflakes-fall{0%{top:-10%}100%{top:100%}}@-webkit-keyframes snowflakes-shake{0%,100%{-webkit-transform:translateX(0);transform:translateX(0)}50%{-webkit-transform:translateX(80px);transform:translateX(80px)}}@keyframes snowflakes-fall{0%{top:-10%}100%{top:100%}}@keyframes snowflakes-shake{0%,100%{transform:translateX(0)}50%{transform:translateX(80px)}}.snowflake{position:fixed;top:-10%;z-index:9999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default;-webkit-animation-name:snowflakes-fall,snowflakes-shake;-webkit-animation-duration:10s,3s;-webkit-animation-timing-function:linear,ease-in-out;-webkit-animation-iteration-count:infinite,infinite;-webkit-animation-play-state:running,running;animation-name:snowflakes-fall,snowflakes-shake;animation-duration:10s,3s;animation-timing-function:linear,ease-in-out;animation-iteration-count:infinite,infinite;animation-play-state:running,running}.snowflake:nth-of-type(0){left:1%;-webkit-animation-delay:0s,0s;animation-delay:0s,0s}.snowflake:nth-of-type(1){left:10%;-webkit-animation-delay:1s,1s;animation-delay:1s,1s}.snowflake:nth-of-type(2){left:20%;-webkit-animation-delay:6s,.5s;animation-delay:6s,.5s}.snowflake:nth-of-type(3){left:30%;-webkit-animation-delay:4s,2s;animation-delay:4s,2s}.snowflake:nth-of-type(4){left:40%;-webkit-animation-delay:2s,2s;animation-delay:2s,2s}.snowflake:nth-of-type(5){left:50%;-webkit-animation-delay:8s,3s;animation-delay:8s,3s}.snowflake:nth-of-type(6){left:60%;-webkit-animation-delay:6s,2s;animation-delay:6s,2s}.snowflake:nth-of-type(7){left:70%;-webkit-animation-delay:2.5s,1s;animation-delay:2.5s,1s}.snowflake:nth-of-type(8){left:80%;-webkit-animation-delay:1s,0s;animation-delay:1s,0s}.snowflake:nth-of-type(9){left:90%;-webkit-animation-delay:3s,1.5s;animation-delay:3s,1.5s}.snowflake:nth-of-type(10){left:25%;-webkit-animation-delay:2s,0s;animation-delay:2s,0s}.snowflake:nth-of-type(11){left:65%;-webkit-animation-delay:4s,2.5s;animation-delay:4s,2.5s}
+			</style>
+			<div class="snowflakes" aria-hidden="true">
+			  <div class="snowflake">
+			  ❅
+			  </div>
+			  <div class="snowflake">
+			  ❆
+			  </div>
+			  <div class="snowflake">
+			  ❅
+			  </div>
+			  <div class="snowflake">
+			  ❆
+			  </div>
+			  <div class="snowflake">
+			  ❅
+			  </div>
+			  <div class="snowflake">
+			  ❆
+			  </div>
+			  <div class="snowflake">
+				❅
+			  </div>
+			  <div class="snowflake">
+				❆
+			  </div>
+			  <div class="snowflake">
+				❅
+			  </div>
+			  <div class="snowflake">
+				❆
+			  </div>
+			  <div class="snowflake">
+				❅
+			  </div>
+			  <div class="snowflake">
+				❆
+			  </div>
+			</div>
+
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	var message = "Predictive Pipeline";
+	var colors = new Array("#ff0000","#00ff00"); // red, green, blue
+	for (var i = 0; i < message.length; i++)
+		$("#page_title").append("<span style=\"color:" + colors[(i % colors.length)] + ";\">" + message[i] + "</span>");
+ </script>
+</body>
+</html>
